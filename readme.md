@@ -1,6 +1,6 @@
-# View Transition API Demo
+# View Transitions API Demo
 
-This repository holds the code showcasing the View Transition API.
+This repository holds the code showcasing the View Transitions API.
 
 ## Getting started
 

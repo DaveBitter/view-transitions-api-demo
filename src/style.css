@@ -48,8 +48,8 @@ body::before {
   left: 0;
   opacity: 0.8;
   background-image: radial-gradient(
-    var(--color-primary) 1px,
-    var(--color-bg) 1px
+    var(--color-primary) 2px,
+    var(--color-bg) 2px
   );
   background-size: 5rem 5rem;
 }
@@ -70,7 +70,7 @@ p {
 }
 
 .app {
-  max-width: 80rem;
+  max-width: 60rem;
   width: 100%;
 }
 
@@ -131,6 +131,10 @@ p {
   padding: 1rem;
 }
 
+.product__details:hover ~ .product__image-wrapper .product__image {
+  transform: scale(1.2);
+}
+
 .product__name {
   font-size: 1.75rem;
 }
@@ -172,13 +176,19 @@ p {
   font-size: 1.5rem;
   color: var(--color-bg);
   background: var(--gradient-primary);
+  text-transform: uppercase;
   cursor: pointer;
+}
+
+.product__image-wrapper {
+  overflow: hidden;
 }
 
 .product__image {
   width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
+  transition: transform var(--transition-duration-snappy) ease-in-out;
 }
 
 @media (min-width: 768px) {

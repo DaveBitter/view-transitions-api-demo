@@ -1,7 +1,7 @@
 {
-  "name": "View Transition API Demo",
-  "short_name": "View Transition API Demo",
-  "description": "A demo of the View Transition API",
+  "name": "View Transitions API Demo",
+  "short_name": "View Transitions API Demo",
+  "description": "A demo of the View Transitions API",
   "scope": "/",
   "start_url": "/",
   "display": "standalone",
