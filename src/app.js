@@ -1,29 +1,47 @@
 const elements = {
-  productOverview: document.querySelector("[data-product-overview]"),
-  productDetail: document.querySelector("[data-product-detail]"),
-  products: [...document.querySelectorAll("[data-product]")],
+  main: document.querySelector("[data-main]"),
+};
+
+const templates = {
+  productOverview: document.querySelector("[data-template-product-overview]"),
+  productDetail: document.querySelector("[data-template-product-detail]"),
 };
 
 const handleViewProduct = (product) => {
+  renderProductDetail();
+
   window.history.pushState(
     product.slug,
     `${product.name} - ${product.brand}`,
     `/product/${product.slug}`
   );
 
-  elements.productDetail.querySelector("[data-product-name]").innerHTML =
-    product.name;
-  elements.productDetail.querySelector("[data-product-brand]").innerHTML =
-    product.brand;
-  elements.productDetail.querySelector("[data-product-price]").innerHTML =
-    product.price;
-  elements.productDetail.querySelector("[data-product-description]").innerHTML =
+  document
+    .querySelector("[data-product-detail]")
+    .querySelector("[data-product-name]").innerHTML = product.name;
+  document
+    .querySelector("[data-product-detail]")
+    .querySelector("[data-product-brand]").innerHTML = product.brand;
+  document
+    .querySelector("[data-product-detail]")
+    .querySelector("[data-product-price]").innerHTML = product.price;
+  document
+    .querySelector("[data-product-detail]")
+    .querySelector("[data-product-description]").innerHTML =
     product.description;
-  elements.productDetail.querySelector("[data-product-image]").src =
-    product.image;
-
-  elements.productOverview.dataset.isVisible = "false";
-  elements.productDetail.dataset.isVisible = "true";
+  document
+    .querySelector("[data-product-detail]")
+    .querySelector("[data-product-image]").src = product.image;
+  document
+    .querySelector("[data-product-detail]")
+    .querySelector(
+      "[data-product-image]"
+    ).style.viewTransitionName = `${product.slug}-image`;
+  document
+    .querySelector("[data-product-detail]")
+    .querySelector(
+      "[data-product-details]"
+    ).style.viewTransitionName = `${product.slug}-details`;
 };
 
 const addEventListenersForProduct = (productElement, product) => {
@@ -33,7 +51,10 @@ const addEventListenersForProduct = (productElement, product) => {
 
   productLinkElements.addEventListener("click", (e) => {
     e.preventDefault();
-    handleViewProduct(product);
+
+    document.startViewTransition(() => {
+      handleViewProduct(product);
+    });
   });
 };
 
@@ -47,21 +68,43 @@ const getProductForProductElement = (productElement) => ({
   image: productElement.querySelector("[data-product-image]").src,
 });
 
+const renderProductOverview = () => {
+  const productOverviewNode = templates.productOverview.content.cloneNode(true);
+
+  elements.main.innerHTML = null;
+  elements.main.appendChild(productOverviewNode);
+
+  [...document.querySelectorAll("[data-product]")].forEach((productElement) => {
+    const product = getProductForProductElement(productElement);
+
+    addEventListenersForProduct(productElement, product);
+  });
+};
+
+const renderProductDetail = () => {
+  const productDetailNode = templates.productDetail.content.cloneNode(true);
+
+  elements.main.innerHTML = null;
+  elements.main.appendChild(productDetailNode);
+};
+
 const handleSPARouting = () => {
-  elements.products.forEach((productElement) => {
+  [...document.querySelectorAll("[data-product]")].forEach((productElement) => {
     const product = getProductForProductElement(productElement);
 
     addEventListenersForProduct(productElement, product);
   });
 
   if (window.location.pathname.startsWith("/product/")) {
-    window.history.pushState({ page: "" }, "", "/");
+    window.history.replaceState({ page: "" }, "", "/");
   }
 
   window.addEventListener("popstate", () => {
-    elements.productOverview.dataset.isVisible = "true";
-    elements.productDetail.dataset.isVisible = "false";
+    document.startViewTransition(() => {
+      renderProductOverview();
+    });
   });
 };
 
+renderProductOverview();
 handleSPARouting();
