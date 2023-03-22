@@ -52,9 +52,13 @@ const addEventListenersForProduct = (productElement, product) => {
   productLinkElements.addEventListener("click", (e) => {
     e.preventDefault();
 
-    document.startViewTransition(() => {
+    if (!document.startViewTransition) {
       handleViewProduct(product);
-    });
+    } else {
+      document.startViewTransition(() => {
+        handleViewProduct(product);
+      });
+    }
   });
 };
 
@@ -100,9 +104,13 @@ const handleSPARouting = () => {
   }
 
   window.addEventListener("popstate", () => {
-    document.startViewTransition(() => {
+    if (!document.startViewTransition) {
       renderProductOverview();
-    });
+    } else {
+      document.startViewTransition(() => {
+        renderProductOverview();
+      });
+    }
   });
 };
 
