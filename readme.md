@@ -1,6 +1,6 @@
-# Parcel Boilerplate
+# View Transition API Demo
 
-This repository holds the boilerplate code for a Parcel project.
+This repository holds the code showcasing the View Transition API.
 
 ## Getting started
 

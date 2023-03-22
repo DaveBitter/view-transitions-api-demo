@@ -1,7 +1,7 @@
 {
-  "name": "parcel-boilerplate",
+  "name": "view-transition-api-demo",
   "version": "1.0.0",
-  "repository": "https://github.com/DaveBitter/parcel-boilerplate.git",
+  "repository": "https://github.com/DaveBitter/view-transition-api-demo.git",
   "author": "Dave Bitter <dbitter@anwb.nl>",
   "license": "MIT",
   "scripts": {

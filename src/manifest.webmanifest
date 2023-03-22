@@ -1,7 +1,7 @@
 {
-  "name": "Parcel Boilerplate",
-  "short_name": "Parcel Boilerplate",
-  "description": "A Boilerplate build with Parcel",
+  "name": "View Transition API Demo",
+  "short_name": "View Transition API Demo",
+  "description": "A demo of the View Transition API",
   "scope": "/",
   "start_url": "/",
   "display": "standalone",
