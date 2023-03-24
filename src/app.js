@@ -16,32 +16,21 @@ const handleViewProduct = (product) => {
     `/product/${product.slug}`
   );
 
-  document
-    .querySelector("[data-product-detail]")
-    .querySelector("[data-product-name]").innerHTML = product.name;
-  document
-    .querySelector("[data-product-detail]")
-    .querySelector("[data-product-brand]").innerHTML = product.brand;
-  document
-    .querySelector("[data-product-detail]")
-    .querySelector("[data-product-price]").innerHTML = product.price;
-  document
-    .querySelector("[data-product-detail]")
-    .querySelector("[data-product-description]").innerHTML =
-    product.description;
-  document
-    .querySelector("[data-product-detail]")
-    .querySelector("[data-product-image]").src = product.image;
-  document
-    .querySelector("[data-product-detail]")
-    .querySelector(
-      "[data-product-image]"
-    ).style.viewTransitionName = `${product.slug}-image`;
-  document
-    .querySelector("[data-product-detail]")
-    .querySelector(
-      "[data-product-details]"
-    ).style.viewTransitionName = `${product.slug}-details`;
+  const productDetailElement = document.querySelector("[data-product-detail]");
+  const { name, brand, price, description, image, slug } = product;
+
+  productDetailElement.querySelector("[data-product-name]").innerHTML = name;
+  productDetailElement.querySelector("[data-product-brand]").innerHTML = brand;
+  productDetailElement.querySelector("[data-product-price]").innerHTML = price;
+  productDetailElement.querySelector("[data-product-description]").innerHTML =
+    description;
+  productDetailElement.querySelector("[data-product-image]").src = image;
+  productDetailElement.querySelector(
+    "[data-product-image]"
+  ).style.viewTransitionName = `${slug}-image`;
+  productDetailElement.querySelector(
+    "[data-product-details]"
+  ).style.viewTransitionName = `${slug}-details`;
 };
 
 const addEventListenersForProduct = (productElement, product) => {
