@@ -191,10 +191,6 @@ p {
   padding: 1rem;
 }
 
-.product__details:hover ~ .product__image-wrapper .product__image {
-  transform: scale(1.2);
-}
-
 .product__name {
   font-size: 1.5rem;
   letter-spacing: 0.2rem;
@@ -246,7 +242,6 @@ p {
 }
 
 .product__image-wrapper {
-  overflow: hidden;
   border-radius: var(--border-radius);
 }
 

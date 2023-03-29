@@ -25,12 +25,7 @@ const handleViewProduct = (product) => {
   productDetailElement.querySelector("[data-product-description]").innerHTML =
     description;
   productDetailElement.querySelector("[data-product-image]").src = image;
-  productDetailElement.querySelector(
-    "[data-product-image]"
-  ).style.viewTransitionName = `${slug}-image`;
-  productDetailElement.querySelector(
-    "[data-product-details]"
-  ).style.viewTransitionName = `${slug}-details`;
+  productDetailElement.style.viewTransitionName = `${slug}-details`;
 };
 
 const addEventListenersForProduct = (productElement, product) => {
