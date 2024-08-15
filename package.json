@@ -5,8 +5,8 @@
   "author": "Dave Bitter <dbitter@anwb.nl>",
   "license": "MIT",
   "scripts": {
-    "build": "parcel build src/index.html && yarn copy:public",
-    "dev": "parcel src/index.html",
+    "build": "parcel build src/**/*.html && yarn copy:public",
+    "dev": "parcel src/**/*.html",
     "copy:public": "cp -r ./public/* dist"
   },
   "staticFiles": {

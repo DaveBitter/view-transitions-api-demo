@@ -26,6 +26,10 @@
   --max-page-width: 80rem;
 }
 
+@view-transition {
+  navigation: auto;
+}
+
 * {
   box-sizing: content-box;
 }

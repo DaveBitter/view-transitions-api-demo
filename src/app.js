@@ -29,11 +29,11 @@ const handleViewProduct = (product) => {
 };
 
 const addEventListenersForProduct = (productElement, product) => {
-  const productLinkElements = productElement.querySelector(
+  const productLinkElement = productElement.querySelector(
     "[data-product-link]"
   );
 
-  productLinkElements.addEventListener("click", (e) => {
+  productLinkElement.addEventListener("click", (e) => {
     e.preventDefault();
 
     if (!document.startViewTransition) {
